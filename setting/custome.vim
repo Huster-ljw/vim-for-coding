@@ -330,6 +330,26 @@ endfun
 "autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
 
+autocmd BufNewFile *.cc,*.cpp,*.[ch],*.go,*.java,*.cxx,*.hh,*.hxx exec ":call AutoSetTitle()"
+function! AutoSetTitle()
+    call setline(1, "/*--------------------------------------------------")
+    call append(line("."), "") 
+    call append(line(".")+1, "@ File Name   : ".expand("%:t"))
+    call append(line(".")+2, "@ Author      : lijiangwei")
+    call append(line(".")+3, "@ Mail        : jwli@hust.edu.cn")
+    call append(line(".")+4, "@ Created Time: ".strftime("%c"))
+    call append(line(".")+5, "@ Discription : ")
+    call append(line(".")+6, "---------------------------------------------------*/")
+    call append(line(".")+7, "") 
+    call append(line(".")+8, "") 
+        
+    normal G
+    normal o
+endfunc
+
+
+
+
 " 定义函数AutoSetFileHead，自动插入文件头
 autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"
 function! AutoSetFileHead()
