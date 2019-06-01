@@ -77,7 +77,6 @@ set cursorcolumn
 " 突出显示当前行
 set cursorline
 
-
 " 设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制, 不需要可以去掉
 " 好处：误删什么的，如果以前屏幕打开，可以找回
 set t_ti= t_te=
@@ -324,7 +323,7 @@ au BufWinEnter *.php set mps-=<:>
 fun! <SID>StripTrailingWhitespaces()
     let l = line(".")
     let c = col(".")
-    %s/\s\+$//e
+    %s/\s\+$//t
     call cursor(l, c)
 endfun
 "autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
@@ -334,20 +333,35 @@ autocmd BufNewFile *.cc,*.cpp,*.[ch],*.go,*.java,*.cxx,*.hh,*.hxx exec ":call Au
 function! AutoSetTitle()
     call setline(1, "/*--------------------------------------------------")
     call append(line("."), "") 
-    call append(line(".")+1, "@ File Name   : ".expand("%:t"))
-    call append(line(".")+2, "@ Author      : lijiangwei")
-    call append(line(".")+3, "@ Mail        : jwli@hust.edu.cn")
-    call append(line(".")+4, "@ Created Time: ".strftime("%c"))
-    call append(line(".")+5, "@ Discription : ")
+    call append(line(".")+1, "@ File Name    : ".expand("%:t"))
+    call append(line(".")+2, "@ Author       : lijiangwei")
+    call append(line(".")+3, "@ Mail         : jwli@alumni.hust.edu.cn")
+    call append(line(".")+4, "@ Created Time : ".strftime("%c"))
+    call append(line(".")+5, "@ Discription  : ")
     call append(line(".")+6, "---------------------------------------------------*/")
     call append(line(".")+7, "") 
     call append(line(".")+8, "") 
         
-    normal G
-    normal o
+    if &filetype == 'cc' || &filetype == 'cpp' || &filetype == 'cxx'
+        call append(line(".")+9, "#include <iostream>")
+        normal G
+        normal o
+    endif
+
+    if &filetype == 'c'
+        call append(line(".")+9, "#include <stdio.h>")
+        normal G
+        normal o
+    endif
+
+    if &filetype == 'go'
+        call append(line(".")+9, "package  ")
+        normal G
+        normal $
+    endif
+
+
 endfunc
-
-
 
 
 " 定义函数AutoSetFileHead，自动插入文件头
