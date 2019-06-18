@@ -1,12 +1,4 @@
 "==========================================
-" Author:  wklken
-" Version: 9.1
-" Email: wklken@yeah.net
-" BlogPost: http://www.wklken.me
-" ReadMe: README.md
-" Donation: http://www.wklken.me/pages/donation.html
-" Last_modify: 2015-12-15
-" Sections:
 "       -> Initial Plugin 加载插件
 "       -> General Settings 基础设置
 "       -> Display Settings 展示/排版等界面格式设置
@@ -15,7 +7,6 @@
 "       -> HotKey Settings  自定义快捷键
 "       -> FileType Settings  针对文件类型的设置
 "       -> Theme Settings  主题设置
-"
 "       -> 插件配置和具体设置在vimrc.bundles中
 "==========================================
 
@@ -82,20 +73,19 @@ set cursorline
 set t_ti= t_te=
 
 
-" 鼠标暂不启用, 键盘党....
+" 鼠标暂不启用
 set mouse-=a
 " 启用鼠标
 " set mouse=a
 " Hide the mouse cursor while typing
-" set mousehide
-
+set mousehide
 
 " 修复ctrl+m 多光标操作选择的bug，但是改变了ctrl+v进行字符选中时将包含光标下的字符
 set selection=inclusive
 set selectmode=mouse,key
 
 " change the terminal's title
-" set title
+set title
 " 去掉输入错误的提示声音
 set novisualbell
 set noerrorbells
