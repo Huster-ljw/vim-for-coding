@@ -488,8 +488,8 @@ set pastetoggle=<F7>            "    when in insert mode, press <F7> to go to
                                 "    paste mode, where you can paste mass data
                                 "    that won't be autoindented
 " Go to home and end using capitalized directions
-noremap H ^
-noremap L $
+" noremap H ^
+" noremap L $
 " Map ; to : and save a million keystrokes 用于快速进入命令行
 nnoremap ; :
 " 命令行模式增强，ctrl - a到行首， -e 到行尾

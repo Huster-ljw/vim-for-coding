@@ -122,8 +122,6 @@ Shortcut Key       | Mapping to           | Description
 `<F4>`       | `:set wrap! wrap?<CR>`     | open/close wrap
 `<F6>`       | `:exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>`  | Open/Close Sytax Check(Close for speeding open huge file)
 `<F7>`       |                            | open/close paste mode
-`H`          | `^`                        | Quick jump to top of line
-`L`          | `$`                        | Quick jump to end of line
 `;`          | `:`                        | exec vim command
 `<C-a>`      | `<Home>`                   | vim command mode jump to top of line
 `/`          | `/\v`                      | Search
