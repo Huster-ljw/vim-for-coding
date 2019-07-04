@@ -1,4 +1,5 @@
 "==========================================
+" Sections:
 "       -> Initial Plugin 加载插件
 "       -> General Settings 基础设置
 "       -> Display Settings 展示/排版等界面格式设置
@@ -7,6 +8,7 @@
 "       -> HotKey Settings  自定义快捷键
 "       -> FileType Settings  针对文件类型的设置
 "       -> Theme Settings  主题设置
+"
 "       -> 插件配置和具体设置在vimrc.bundles中
 "==========================================
 
@@ -35,7 +37,7 @@ filetype plugin indent on
 " 文件修改之后自动载入
 set autoread
 " 启动的时候不显示那个援助乌干达儿童的提示
-"set shortmess=atI
+set shortmess=atI
 
 " 备份,到另一个位置. 防止误删, 目前是取消备份
 "set backup
@@ -45,7 +47,7 @@ set autoread
 " 取消备份。 视情况自己改
 "set nobackup
 " 关闭交换文件
-"set noswapfile
+set noswapfile
 
 
 " TODO: remove this, use gundo
@@ -73,12 +75,13 @@ set cursorline
 set t_ti= t_te=
 
 
-" 鼠标暂不启用
+" 鼠标暂不启用, 键盘党....
 set mouse-=a
 " 启用鼠标
 " set mouse=a
 " Hide the mouse cursor while typing
-set mousehide
+" set mousehide
+
 
 " 修复ctrl+m 多光标操作选择的bug，但是改变了ctrl+v进行字符选中时将包含光标下的字符
 set selection=inclusive
@@ -179,6 +182,8 @@ set autoindent
 set tabstop=4
 " 每一次缩进对应的空格数
 set shiftwidth=4
+" 用space代替tab的输入
+set expandtab
 " 按退格键时可以一次删掉 4 个空格
 set softtabstop=4
 " insert tabs on the start of a line according to shiftwidth, not tabstop 按退格键时可以一次删掉 4 个空格
@@ -323,11 +328,11 @@ autocmd BufNewFile *.cc,*.cpp,*.[ch],*.go,*.java,*.cxx,*.hh,*.hxx exec ":call Au
 function! AutoSetTitle()
     call setline(1, "/*--------------------------------------------------")
     call append(line("."), "") 
-    call append(line(".")+1, "@ File Name    : ".expand("%:t"))
-    call append(line(".")+2, "@ Author       : lijiangwei")
-    call append(line(".")+3, "@ Mail         : jwli@alumni.hust.edu.cn")
-    call append(line(".")+4, "@ Created Time : ".strftime("%c"))
-    call append(line(".")+5, "@ Discription  : ")
+    call append(line(".")+1, "@ File Name   : ".expand("%:t"))
+    call append(line(".")+2, "@ Author      : lijiangwei")
+    call append(line(".")+3, "@ Mail        : jwli@alumni.hust.edu.cn")
+    call append(line(".")+4, "@ Created Time: ".strftime("%c"))
+    call append(line(".")+5, "@ Discription : ")
     call append(line(".")+6, "---------------------------------------------------*/")
     call append(line(".")+7, "") 
     call append(line(".")+8, "") 
@@ -360,12 +365,27 @@ function! AutoSetFileHead()
     "如果文件类型为.sh文件
     if &filetype == 'sh'
         call setline(1, "\#!/bin/bash")
+        call append(line("."), "\######################################################")
+        call append(line(".")+1, "# File Name   : ".expand("%:t"))
+        call append(line(".")+2, "# Author      : lijiangwei")
+        call append(line(".")+3, "# Mail        : jwli@alumni.hust.edu.cn")
+        call append(line(".")+4, "# Created Time: ".strftime("%c"))
+        call append(line(".")+5, "# Discription : ")
+        call append(line(".")+6, "\######################################################")
+        call append(line(".")+7, "") 
     endif
 
     "如果文件类型为python
     if &filetype == 'python'
-        call setline(1, "\#!/usr/bin/env python")
-        call append(1, "\# encoding: utf-8")
+        call setline(1, "\#!/usr/bin/python -*- coding: utf-8 -*-")
+        call append(line("."), "\######################################################")
+        call append(line(".")+1, "# File Name   : ".expand("%:t"))
+        call append(line(".")+2, "# Author      : lijiangwei")
+        call append(line(".")+3, "# Mail        : jwli@alumni.hust.edu.cn")
+        call append(line(".")+4, "# Created Time: ".strftime("%c"))
+        call append(line(".")+5, "# Discription : ")
+        call append(line(".")+6, "\######################################################")
+        call append(line(".")+7, "") 
     endif
 
     normal G
@@ -539,11 +559,11 @@ hi Visual term=reverse cterm=reverse ctermbg=black guibg=grey60
 hi VisualNOS term=underline,bold cterm=underline,bold gui=underline,bold
 
 " 设置退出vim后，不显示文件内容
-if &term =~ "xterm"
+" if &term =~ "xterm"
     " SecureCRT versions prior to 6.1.x do not support 4-digit DECSET
-    "    let &t_ti = "\<Esc>[?1049h"
-    "    let &t_te = "\<Esc>[?1049l"
+    " let &t_ti = "\<Esc>[?1049h"
+    " let &t_te = "\<Esc>[?1049l"
     " Use 2-digit DECSET instead
     let &t_ti = "\<Esc>[?47h"
     let &t_te = "\<Esc>[?47l"
-endif
+" endif
