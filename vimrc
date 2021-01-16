@@ -15,6 +15,8 @@ Plugin 'vim-airline/vim-airline'    " 状态栏增强
 Plugin 'vim-airline/vim-airline-themes' " 状态栏增强
 Plugin 'tomasr/molokai'             " 增加molokai主题
 Plugin 'christoomey/vim-tmux-navigator' " 让vim能兼容tmux
+Plugin 'vim-scripts/OmniCppComplete'
+" Plugin 'fatih/vim-go'
 " 主动技能
 "Plugin 'sjl/gundo.vim'              " <Leader>h 文件时光机
 Plugin 'scrooloose/nerdtree'        " Tab 目录树
@@ -30,6 +32,7 @@ Plugin 'thinca/vim-quickrun'        " <Leader>q 运行当前文件
 Plugin 'Lokaltog/vim-easymotion'    " <Leader><Leader>w/b/h/k/j/l 快速跳转
 Plugin 'terryma/vim-multiple-cursors' " ctrl-m 多光标操作
 Plugin 'rking/ag.vim'
+Plugin 'fatih/vim-go'
 call vundle#end()
 filetype plugin indent on
 
@@ -53,4 +56,5 @@ source ~/.vim/setting/vim-multiple-cursors.vim
 source ~/.vim/setting/vim-quickrun.vim
 " 自定义设置
 source ~/.vim/setting/custome.vim
+source ~/.vim/setting/vim-go.vim
 set runtimepath^=~/.vim/bundle/ag.vim
